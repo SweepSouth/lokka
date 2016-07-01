@@ -51,6 +51,11 @@ var Lokka = function () {
       }
     }
   }, {
+    key: 'replaceHeaders',
+    value: function replaceHeaders(headers) {
+      this._transport.replaceHeaders(headers);
+    }
+  }, {
     key: 'send',
     value: function send(rawQuery, vars) {
       if (!rawQuery) {
