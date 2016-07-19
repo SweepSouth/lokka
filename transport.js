@@ -23,7 +23,7 @@ var LokkaTransport = function () {
     key: 'send',
 
     /*eslint-disable */
-    value: function send(rawQuery, variables, operationName) {
+    value: function send(rawQuery, variables, files, operationName) {
       throw new Error('not implemented!');
       // return new Promise();
     }

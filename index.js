@@ -58,11 +58,13 @@ var Lokka = function () {
   }, {
     key: 'send',
     value: function send(rawQuery, vars) {
+      var files = arguments.length <= 2 || arguments[2] === undefined ? null : arguments[2];
+
       if (!rawQuery) {
         throw new Error('rawQuery is required!');
       }
 
-      return this._transport.send(rawQuery, vars);
+      return this._transport.send(rawQuery, vars, files);
     }
   }, {
     key: 'createFragment',
@@ -123,6 +125,8 @@ var Lokka = function () {
   }, {
     key: 'mutate',
     value: function mutate(query, vars) {
+      var files = arguments.length <= 2 || arguments[2] === undefined ? null : arguments[2];
+
       if (!query) {
         throw new Error('query is required!');
       }
@@ -132,7 +136,7 @@ var Lokka = function () {
       var fragments = this._findFragments(mutationQuery);
       var queryWithFragments = mutationQuery + '\n' + fragments.join('\n');
 
-      return this.send(queryWithFragments, vars);
+      return this.send(queryWithFragments, vars, files);
     }
   }, {
     key: 'watchQuery',
